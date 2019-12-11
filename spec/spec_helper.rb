@@ -3,7 +3,7 @@ require "bundler"
 require "active_record"
 require "vcr"
 
-Bundler.require(:default, :development)
+Bundler.require(:default, :development, :test)
 
 Dir[File.join(File.dirname(__FILE__), '../lib/**/*.rb')].each { |f| require f }
 
