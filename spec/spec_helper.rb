@@ -10,7 +10,6 @@ Dir[File.join(File.dirname(__FILE__), '../lib/**/*.rb')].each { |f| require f }
 # Set up database connection and create database
 ENV["DATABASE_URL"] ||= "sqlite3::memory:"
 ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
-ActiveRecord::Base.connection.execute("CREATE TABLE shows(id INT, quantity INT, last_update INT)")
 
 RSpec.configure do |config|
   config.shared_context_metadata_behavior = :apply_to_host_groups
@@ -24,6 +23,11 @@ RSpec.configure do |config|
   end
 
   config.profile_examples = 10
+
+  config.before(:each) do
+    ActiveRecord::Base.connection.execute("DROP TABLE IF EXISTS shows")
+    ActiveRecord::Base.connection.execute("CREATE TABLE shows(id INT, quantity INT, last_update INT)")
+  end
 end
 
 VCR.configure do |c|
