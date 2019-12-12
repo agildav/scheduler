@@ -17,7 +17,8 @@ Your job is to examine the shows in the database and determine which ones need t
 be updated, then output a hash with the IDs that need updating and when they should
 be updated. You will not update any shows as part of this project, only output the
 schedule of when each show should be updated. You only need to schedule updates
-for shows that exist in your local database and for which the quantity has changed.
+for shows that exist in your local database, for which the quantity has changed,
+and which have not been updated in the last hour.
 
 ## Schema With Examples
 
