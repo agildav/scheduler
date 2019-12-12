@@ -2,8 +2,8 @@ RSpec.describe Scheduler do
   before do
     # Seed database
     File.read(example_file).each_line do |line|
-      id, last_update = line.split(",")
-      Show.create!(id: id, last_update: last_update)
+      id, quantity, last_update = line.split(",")
+      Show.create!(id: id, quantity: quantity, last_update: last_update)
     end
   end
 
