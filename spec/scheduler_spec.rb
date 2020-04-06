@@ -12,13 +12,14 @@ RSpec.describe Scheduler do
     let(:needs_updating) { [1, 2] }
 
     it "finds the IDs that need updating" do
-      result = [] # replace this with your result
-      expect(result).to match_array needs_updating
+      result = Scheduler.get_shows # replace this with your result
+      ids = result.map { |k,v| k.to_i }
+      expect(ids).to eq needs_updating
     end
 
     it "creates the update schedule" do
-      scheduled = {} # replace this with your schedule
-      expect(scheduled).to eq({}) # replace this hash with the correct schedule
+      scheduled = Scheduler.get_shows # replace this with your schedule
+      expect(scheduled).to eq({1 => 0, 2 => 15}) # replace this hash with the correct schedule
     end
   end
 
@@ -26,9 +27,16 @@ RSpec.describe Scheduler do
     let(:example_file) { "spec/fixtures/example2.txt" }
     let(:needs_updating) { [2, 4] }
 
-    it "finds the IDs that need updating"
+    it "finds the IDs that need updating" do
+      result = Scheduler.get_shows # replace this with your result
+      ids = result.map { |k,v| k.to_i }
+      expect(ids).to eq needs_updating
+    end
 
-    it "creates the update schedule"
+    it "creates the update schedule" do
+      scheduled = Scheduler.get_shows # replace this with your schedule
+      expect(scheduled).to eq({2 => 0, 4 => 15}) # replace this hash with the correct schedule
+    end
   end
 
   describe "example 3", vcr: { cassette_name: "example3" } do
@@ -36,7 +44,11 @@ RSpec.describe Scheduler do
     # These are the show IDs that need updating
     let(:needs_updating) { File.read("spec/fixtures/example3-updates.txt").split.map(&:to_i) }
 
-    it "finds the IDs that need updating"
+    it "finds the IDs that need updating" do
+      result = Scheduler.get_shows # replace this with your result
+      ids = result.map { |k,v| k.to_i }
+      expect(ids).to eq needs_updating
+    end
 
     it "creates the update schedule"
   end

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://goldstar-remote-api.com
+    uri: https://goldstar-remote-api.com/
     body:
       encoding: US-ASCII
       string: ''
