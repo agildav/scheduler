@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 ruby "2.5.7"
 
-gem "activerecord", "~> 6.0.0"
+gem "activerecord", "~> 6.0.6"
 gem "faraday"
 gem "sqlite3", "~> 1.4.0"
 gem "byebug"
